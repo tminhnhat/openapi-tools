@@ -1,0 +1,167 @@
+Swagger: "2.0"
+info:
+  title: Google Cloud Vision API
+  description: Derive insight from images with our powerful Cloud Vision API.
+  version: v1
+host: vision.googleapis.com
+basePath: /v1
+schemes:
+  - https
+produces:
+  - application/json
+consumes:
+  - application/json
+paths:
+  /images:annotate:
+    post:
+      summary: Derive Insight
+      description: Derive insight from images with our powerful Cloud Vision API.
+      parameters:
+        - in: body
+          type: string
+          required: true
+          schema:
+            $ref: "#/definitions/ImageRequest"
+      responses:
+        200:
+          description: Successful Response
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/ImageResponse'
+      tags:
+        - Machine Learning
+        - Facial Recognition
+        - Object Recongition
+        - Optical Character Recognition
+        - Sentiment Analysis
+        - Similar Content
+        - Landmark Detection
+        - Language Identification
+        - Image Moderation
+      x-hype-tags:
+        - Vision
+        - Understand
+        - Powerful
+        - Categorization
+        - Object Recongition
+        - Facial Recongition
+        - Optical Character Recognition
+        - Bulk Metadata
+        - Moderation
+        - Offensive Content
+        - Sentiment Analysis
+        - Analysis
+        - Insights
+        - Improves Over Time
+        - Celebrities
+        - Similar Content
+        - Language Identification
+        - Logo Detection
+        - Landmark Detection
+        - Image Attributes
+definitions:
+  ImageRequest:
+    properties:
+      requests:
+        description: The image request envelope.
+        type: object
+        required: true
+        schema:
+          $ref: "#/definitions/AnnotateImageRequest"
+  AnnotateImageRequest:
+    properties:
+      image:
+        description: Image object.
+        type: object
+        required: true
+        schema:
+          $ref: "#/definitions/Image"
+      features:
+        description: Image object.
+        type: object
+        required: true
+        schema:
+          $ref: "#/definitions/Feature"
+      imageContext:
+        description: Image object.
+        type: object
+        required: true
+        schema:
+          $ref: "#/definitions/ImageContext"
+  ImageResponse:
+    properties:
+      responses:
+        description: The image response envelope.
+        type: object
+        required: true
+        schema:
+          $ref: "#/definitions/AnnotateImageResponse"
+  AnnotateImageResponse:
+    properties:
+      faceAnnotations:
+        description: Face Annotations.
+        type: object
+        required: true
+        schema:
+          $ref: "#/definitions/FaceAnnotation"
+      landmarkAnnotations:
+        description: Landmark Annotations.
+        type: object
+        required: true
+        schema:
+          $ref: "#/definitions/EntityAnnotation"
+      logoAnnotations:
+        description: Logo Annotations.
+        type: object
+        required: true
+        schema:
+          $ref: "#/definitions/EntityAnnotation"
+      labelAnnotations:
+        description: Label Annotations.
+        type: object
+        required: true
+        schema:
+          $ref: "#/definitions/EntityAnnotation"
+      textAnnotations:
+        description: Text Annotations.
+        type: object
+        required: true
+        schema:
+          $ref: "#/definitions/EntityAnnotation"
+      fullTextAnnotation:
+        description: Full Text Annotations.
+        type: object
+        required: true
+        schema:
+          $ref: "#/definitions/fullTextAnnotation"
+      safeSearchAnnotation:
+        description: Safe Search Annotations.
+        type: object
+        required: true
+        schema:
+          $ref: "#/definitions/safeSearchAnnotation"
+      imagePropertiesAnnotation:
+        description: Image Properties Annotations.
+        type: object
+        required: true
+        schema:
+          $ref: "#/definitions/ImageProperties"
+      cropHintsAnnotation:
+        description: Crop Hints Annotations.
+        type: object
+        required: true
+        schema:
+          $ref: "#/definitions/CropHintsAnnotation"
+      webDetection:
+        description: Web Detection.
+        type: object
+        required: true
+        schema:
+          $ref: "#/definitions/WebDetection"
+      error:
+        description: Error.
+        type: object
+        required: true
+        schema:
+          $ref: "#/definitions/Status"
